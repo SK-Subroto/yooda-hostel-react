@@ -19,8 +19,11 @@ const AddStudent = () => {
         const newStudent = {
             ...student
         }
-        // newStudent["status"] = true;
-        console.log(newStudent);
+        if (newStudent.status === "true") {
+            newStudent["status"] = true;
+        } else if (newStudent.status === "false") {
+            newStudent["status"] = false;
+        }
         axios.post('https://sk-yooda-hostel.herokuapp.com/students', newStudent)
             .then(res => {
                 if (res.data.insertedId) {
@@ -44,36 +47,36 @@ const AddStudent = () => {
                     <Row className="mb-3">
                         <Form.Group as={Col} controlId="formGridModel">
                             <Form.Label>Fullname</Form.Label>
-                            <Form.Control name="fullname" onBlur={handleOnBlur} type="text" placeholder="Enter Name" />
+                            <Form.Control name="fullname" onBlur={handleOnBlur} type="text" placeholder="Enter Name" required />
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridMadeBy">
                             <Form.Label>Roll</Form.Label>
-                            <Form.Control name="roll" onBlur={handleOnBlur} type="text" placeholder="Roll Number" />
+                            <Form.Control name="roll" onBlur={handleOnBlur} type="text" placeholder="Roll Number" required />
                         </Form.Group>
                     </Row>
 
                     <Row className="mb-3">
                         <Form.Group as={Col} className="mb-3" controlId="formGridPrice">
                             <Form.Label>Age</Form.Label>
-                            <Form.Control name="age" onBlur={handleOnBlur} type="text" placeholder="Age" />
+                            <Form.Control name="age" onBlur={handleOnBlur} type="text" placeholder="Age" required />
                         </Form.Group>
 
                         <Form.Group as={Col} className="mb-3" controlId="formGridPrice">
                             <Form.Label>Class</Form.Label>
-                            <Form.Control name="class" onBlur={handleOnBlur} type="text" placeholder="class" />
+                            <Form.Control name="class" onBlur={handleOnBlur} type="text" placeholder="class" required />
                         </Form.Group>
                     </Row>
                     <Row className="mb-3">
                         <Form.Group as={Col} className="mb-3" controlId="formGridPrice">
                             <Form.Label>Hall Name</Form.Label>
-                            <Form.Control name="hall" onBlur={handleOnBlur} type="text" placeholder="Hall Name" />
+                            <Form.Control name="hall" onBlur={handleOnBlur} type="text" placeholder="Hall Name" required />
                         </Form.Group>
 
                         <Form.Group as={Col} className="mb-3" controlId="formGridPrice">
                             <Form.Label>Status</Form.Label>
                             {/* <Form.Control name="status" onBlur={handleOnBlur} type="text" placeholder="status" /> */}
-                            <select className="form-select" name="status" onBlur={handleOnBlur}>
+                            <select className="form-select" name="status" onBlur={handleOnBlur} required>
                                 <option value="false">False</option>
                                 <option value="true">True</option>
                             </select>

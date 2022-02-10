@@ -43,12 +43,12 @@ const AddFood = () => {
                     <Row className="mb-3">
                         <Form.Group as={Col} controlId="formGridModel">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control name="name" onBlur={handleOnBlur} type="text" placeholder="Enter Name" />
+                            <Form.Control name="name" onBlur={handleOnBlur} type="text" placeholder="Enter Name" required />
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridMadeBy">
                             <Form.Label>Price</Form.Label>
-                            <Form.Control name="price" onBlur={handleOnBlur} type="number" placeholder="Enter Price" />
+                            <Form.Control name="price" onBlur={handleOnBlur} type="number" placeholder="Enter Price" required />
                         </Form.Group>
                     </Row>
 

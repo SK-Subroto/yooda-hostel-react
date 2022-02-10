@@ -60,11 +60,11 @@ const AdminDashboard = () => {
                 <SidebarContent>
                     <Menu iconShape="circle">
 
-                        <MenuItem icon={<FaPizzaSlice />}> <Link activeStyle={activeStyle} to={`admin/add-food`}>Add Fooditem</Link></MenuItem>
-                        <MenuItem icon={<FaTasks />}> <Link activeStyle={activeStyle} to={`admin/manage-food`}>Manage Food</Link></MenuItem>
-                        <MenuItem icon={<FaUserGraduate />}> <Link activeStyle={activeStyle} to={`admin/add-student`}>Add Student</Link></MenuItem>
-                        <MenuItem icon={<FaUsers />}> <Link activeStyle={activeStyle} to={`admin/manage-student`}>Manage Student</Link></MenuItem>
-                        <MenuItem icon={<FaLayerGroup />}> <Link activeStyle={activeStyle} to={`admin/distribution`}>Distribution</Link></MenuItem>
+                        <MenuItem icon={<FaPizzaSlice />}> <Link to={`admin/add-food`}>Add Fooditem</Link></MenuItem>
+                        <MenuItem icon={<FaTasks />}> <Link to={`admin/manage-food`}>Manage Food</Link></MenuItem>
+                        <MenuItem icon={<FaUserGraduate />}> <Link to={`admin/add-student`}>Add Student</Link></MenuItem>
+                        <MenuItem icon={<FaUsers />}> <Link to={`admin/manage-student`}>Manage Student</Link></MenuItem>
+                        <MenuItem icon={<FaLayerGroup />}> <Link to={`admin/distribution`}>Distribution</Link></MenuItem>
 
                     </Menu>
                 </SidebarContent>

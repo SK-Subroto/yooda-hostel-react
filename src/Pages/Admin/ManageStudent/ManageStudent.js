@@ -120,7 +120,7 @@ const ManageStudent = () => {
                 </div>
                 :
                 <Container>
-                    <div className="px-5 py-3 shadow" style={{ height: '85vh' }}>
+                    <div className="px-5 py-3 shadow" style={{ minHeight: '85vh' }}>
                         <h3 className="text-center fw-bold mb-2">Manage All Student</h3>
                         <Table hover responsive className="product-table overflow-scroll">
                             <thead className="border-top">

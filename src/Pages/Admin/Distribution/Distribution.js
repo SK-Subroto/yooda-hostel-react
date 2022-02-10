@@ -43,7 +43,6 @@ const Distribution = () => {
 
     const checkAlreadyTaken = (data, event) => {
         const { roll, date, shift } = data
-        console.log(roll + " " + date + " " + shift);
         const url = `https://sk-yooda-hostel.herokuapp.com/distributions?roll=${roll}&date=${date}&shift=${shift}`
         axios.get(url)
             .then(res => {
@@ -59,7 +58,6 @@ const Distribution = () => {
     }
 
     const saveData = (isTaken, distribute, event) => {
-        console.log(isTaken);
         if (!isTaken) {
             axios.post('https://sk-yooda-hostel.herokuapp.com/distributions', distribute)
                 .then(res => {
@@ -88,9 +86,10 @@ const Distribution = () => {
     const handleSubmitDistribution = event => {
         event.preventDefault();
         const newDistribute = {
-            ...distribute
+            ...distribute,
+            fullname: student.fullname,
+            roll: student.roll
         }
-        console.log(newDistribute);
         checkAlreadyTaken(newDistribute, event)
     }
 
@@ -121,25 +120,26 @@ const Distribution = () => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridModel">
                                 <Form.Label>Fullname</Form.Label>
-                                <Form.Control name="fullname" onBlur={handleOnBlur} type="text" defaultValue={student?.fullname} />
+                                <Form.Control name="fullname" type="text" defaultValue={student?.fullname} disabled />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridMadeBy">
                                 <Form.Label>Roll</Form.Label>
-                                <Form.Control name="roll" onBlur={handleOnBlur} type="text" defaultValue={student?.roll} />
+                                <Form.Control name="roll" type="text" defaultValue={student?.roll} disabled />
                             </Form.Group>
                         </Row>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} className="mb-3" controlId="formGridPrice">
                                 <Form.Label>Date</Form.Label>
-                                <Form.Control name="date" onBlur={handleOnBlur} type="date" placeholder="mm/dd/yyyy" />
+                                <Form.Control name="date" onBlur={handleOnBlur} type="date" placeholder="mm/dd/yyyy" required />
                             </Form.Group>
 
                             <Form.Group as={Col} className="mb-3" controlId="formGridPrice">
                                 <Form.Label>Shift</Form.Label>
                                 {/* <Form.Control name="status" onBlur={handleOnBlur} type="text" placeholder="status" /> */}
-                                <select className="form-select" name="shift" onBlur={handleOnBlur}>
+                                <select className="form-select" name="shift" onBlur={handleOnBlur} required>
+                                    <option >----</option>
                                     <option value="day">Day</option>
                                     <option value="night">Night</option>
                                 </select>
@@ -149,7 +149,8 @@ const Distribution = () => {
                             <Form.Group as={Col} className="mb-3" controlId="formGridPrice">
                                 <Form.Label>Fooditem</Form.Label>
                                 {/* <Form.Control name="status" onBlur={handleOnBlur} type="text" placeholder="status" /> */}
-                                <select className="form-select" name="food" onBlur={handleOnBlur}>
+                                <select className="form-select" name="food" onBlur={handleOnBlur} required>
+                                    <option >----</option>
                                     {
                                         allFoods.map((food) => {
                                             return (
@@ -162,7 +163,8 @@ const Distribution = () => {
 
                             <Form.Group as={Col} className="mb-3" controlId="formGridPrice">
                                 <Form.Label>Status</Form.Label>
-                                <select className="form-select" name="status" onBlur={handleOnBlur}>
+                                <select className="form-select" name="status" onBlur={handleOnBlur} required>
+                                    <option >----</option>
                                     <option value="false">NotServed</option>
                                     <option value="true">Served</option>
                                 </select>
